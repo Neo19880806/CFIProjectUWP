@@ -38,40 +38,11 @@ namespace CFIProjectUWP
         }
 
         private static String connectionString = "database=work;Password=123456;User ID=root;server=127.0.0.1;SslMode=None";
-        private async void Page_Loaded(object sender, RoutedEventArgs e)
+
+
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            try
-            {
-                using (MySqlConnection connection = new MySqlConnection(connectionString))
-                {
-                    connection.Open();
-                    MySqlCommand getCommand = connection.CreateCommand();
-                    getCommand.CommandText = "select DISTINCT `Course Title` from tblsiscrns_sr004_2016_s2 where Day_Of_Week!='0'";
-                    using (MySqlDataReader reader = getCommand.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            String subject = reader.GetString("Course Title");
-                            cmbValidSubject.Items.Add(subject);
-                        }
-
-                        if (cmbValidSubject.Items.Count > 0)
-                        {
-                            cmbValidSubject.SelectedIndex = 0;
-                        }
-                    }
-
-                }
-            }
-            catch (MySqlException)
-            {
-                MessageDialog dialog = new MessageDialog("Couldn't connect to database!");
-                await dialog.ShowAsync();
-            }
-        }
-
-        private async void btnSearch_Click(object sender, RoutedEventArgs e)
-        {
+            String selectedSubject = e.Parameter.ToString();
             try
             {
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -80,13 +51,14 @@ namespace CFIProjectUWP
                         "`Meeting Finish Date`,Day_Of_Week,Time,Room,Lecturer,Campus from tblsiscrns_sr004_2016_s2 " +
                         "left join tblsubjectcompetencies on tblsiscrns_sr004_2016_s2.`Course Code`=tblsubjectcompetencies.CourseNumber " +
                         "where `Course Title` = \"{0}\" and Day_Of_Week!='0'",
-                        cmbValidSubject.SelectedValue);
+                        selectedSubject);
 
                     connection.Open();
                     MySqlCommand getCommand = connection.CreateCommand();
                     getCommand.CommandText = sqlQueryString;
                     using (MySqlDataReader reader = getCommand.ExecuteReader())
                     {
+                        mQueryList.Clear();
                         while (reader.Read())
                         {
                             CFIDetail detail = new CFIDetail();
@@ -103,7 +75,7 @@ namespace CFIProjectUWP
                             mQueryList.Add(detail);
                         }
 
-                        if(mQueryList.Count >0)
+                        if (mQueryList.Count > 0)
                         {
                             btnFiltering.IsEnabled = true;
                             btnSorting.IsEnabled = true;
@@ -128,9 +100,14 @@ namespace CFIProjectUWP
             }
         }
 
-        private async void StackPanel_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        private void StackPanel_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
         {
 
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(CFIValidSubjectPage));
         }
     }
 }
