@@ -1,0 +1,59 @@
+﻿<Page
+    x:Class="CFIProjectUWP.CFIMainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CFIProjectUWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:CFIProjectUWP.Model"
+    mc:Ignorable="d" Loaded="Page_Loaded">
+    <Page.Resources>
+        <DataTemplate  x:Key="HeaderTemplate">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock  Text="CRN" Margin="5,0,0,0" MinWidth="50" Visibility="Collapsed"/>
+                    <TextBlock  Text="SubjectCode" Margin="20,0,0,0" MinWidth="180" />
+                    <TextBlock  Text="CompetencyName" Margin="5,0,0,0" MinWidth="120" />
+                    <TextBlock  Text="StartDate" Margin="5,0,0,0" MinWidth="600" />
+                    <TextBlock  Text="EndDate" Margin="5,0,0,0" MinWidth="200" />
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:DataType="data:CFIDetail" x:Key="CFIDetailTemplate">
+            <StackPanel Orientation="Horizontal" DoubleTapped="StackPanel_DoubleTapped" BorderThickness="1" BorderBrush="Black">
+                <TextBlock  Text="{x:Bind CRN}" Margin="5,0,0,0" MinWidth="50" Visibility="Collapsed"/>
+                <TextBlock  Text="{x:Bind SubjectCode}" Margin="5,0,0,0" MinWidth="180"/>
+                <TextBlock  Text="{x:Bind CompetencyName}" Margin="5,0,0,0" MinWidth="120"/>
+                <TextBlock  Text="{x:Bind StartDate}" Margin="5,0,0,0" MinWidth="600"/>
+                <TextBlock  Text="{x:Bind EndDate}" Margin="5,0,0,0" MinWidth="200"/>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+    <SplitView x:Name="mySplitView" Margin="0" IsPaneOpen="false" OpenPaneLength="150" DisplayMode="CompactInline" CompactPaneLength="35">
+        <SplitView.Pane>
+            <StackPanel Background="#FF7F7F7F">
+                <Button x:Name="controlsButton" Content="&#xE700;" FontFamily="Segoe MDL2 Assets" HorizontalAlignment="Left" Margin="0,15,0,0" Background="{x:Null}" Click="controlsButton_Click"/>
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                        <Button Name="btnFiltering" Content="&#xE713;" FontFamily="Segoe MDL2 Assets" Background="{x:Null}"/>
+                        <TextBlock Name="filteringTextBlock" Text=""></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                        <Button Name="btnSorting" Content="&#xE710;" FontFamily="Segoe MDL2 Assets" Background="{x:Null}"/>
+                        <TextBlock Name="sortingTextBlock" Text="Sorting"></TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </SplitView.Pane>
+        <StackPanel>
+            <TextBlock x:Name="txtTitile" TextWrapping="Wrap" Text="Class Finder MainPage" VerticalAlignment="Center" Margin="10,0" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center"/>
+            <StackPanel Orientation="Horizontal">
+                <ComboBox x:Name="cmbValidSubject" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Center" MinWidth="200" Width="213" SelectedIndex="-1"/>
+                <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="btnSearch_Click"/>
+            </StackPanel>
+            <TextBlock x:Name="titleTextBlock" HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="Query Result" VerticalAlignment="Top" FontSize="30"/>
+            <ListView x:Name="myListView"  ScrollViewer.VerticalScrollMode="Enabled"  ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.HorizontalScrollBarVisibility="Visible" 
+                          HeaderTemplate ="{StaticResource HeaderTemplate}" ItemTemplate="{StaticResource CFIDetailTemplate}" ItemsSource="{x:Bind mQueryList,Mode=OneWay}" Margin="0" Grid.Row="3" Grid.ColumnSpan="2"/>
+        </StackPanel>
+    </SplitView>
+</Page>
