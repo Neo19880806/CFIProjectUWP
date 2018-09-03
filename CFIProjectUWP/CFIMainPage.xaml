@@ -12,21 +12,31 @@
             <StackPanel>
                 <TextBlock x:Name="titleTextBlock" HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="Query Result" VerticalAlignment="Top" FontSize="30"/>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock  Text="CRN" Margin="5,0,0,0" MinWidth="50" Visibility="Collapsed"/>
-                    <TextBlock  Text="SubjectCode" Margin="20,0,0,0" MinWidth="180" />
-                    <TextBlock  Text="CompetencyName" Margin="5,0,0,0" MinWidth="120" />
-                    <TextBlock  Text="StartDate" Margin="5,0,0,0" MinWidth="600" />
-                    <TextBlock  Text="EndDate" Margin="5,0,0,0" MinWidth="200" />
+                    <TextBlock  Text="CRN" Margin="20,0,0,0" Width="100"/>
+                    <TextBlock  Text="SubjectCode" Margin="5,0,0,0" Width="150" />
+                    <TextBlock  Text="CompetencyName" Margin="5,0,0,0" Width="150" />
+                    <TextBlock  Text="StartDate" Margin="5,0,0,0" Width="150" />
+                    <TextBlock  Text="EndDate" Margin="5,0,0,0" Width="150" />
+                    <TextBlock  Text="DayOfWeek" Margin="5,0,0,0" Width="100" />
+                    <TextBlock  Text="Time" Margin="5,0,0,0" Width="100" />
+                    <TextBlock  Text="Room" Margin="5,0,0,0" Width="100" />
+                    <TextBlock  Text="Lecturer" Margin="5,0,0,0" Width="150" />
+                    <TextBlock  Text="Campus" Margin="5,0,0,0" Width="150" />
                 </StackPanel>
             </StackPanel>
         </DataTemplate>
         <DataTemplate x:DataType="data:CFIDetail" x:Key="CFIDetailTemplate">
             <StackPanel Orientation="Horizontal" DoubleTapped="StackPanel_DoubleTapped" BorderThickness="1" BorderBrush="Black">
-                <TextBlock  Text="{x:Bind CRN}" Margin="5,0,0,0" MinWidth="50" Visibility="Collapsed"/>
-                <TextBlock  Text="{x:Bind SubjectCode}" Margin="5,0,0,0" MinWidth="180"/>
-                <TextBlock  Text="{x:Bind CompetencyName}" Margin="5,0,0,0" MinWidth="120"/>
-                <TextBlock  Text="{x:Bind StartDate}" Margin="5,0,0,0" MinWidth="600"/>
-                <TextBlock  Text="{x:Bind EndDate}" Margin="5,0,0,0" MinWidth="200"/>
+                <TextBlock  Text="{x:Bind CRN}" Margin="5,0,0,0" Width="100"/>
+                <TextBlock  Text="{x:Bind SubjectCode}" Margin="5,0,0,0" Width="150" TextTrimming="WordEllipsis" />
+                <TextBlock  Text="{x:Bind CompetencyName}" Margin="5,0,0,0" Width="150" TextTrimming="WordEllipsis" ToolTipService.ToolTip="{x:Bind CompetencyName}"/>
+                <TextBlock  Text="{x:Bind StartDate}" Margin="5,0,0,0" Width="150" TextTrimming="WordEllipsis"/>
+                <TextBlock  Text="{x:Bind EndDate}" Margin="5,0,0,0" Width="150" TextTrimming="WordEllipsis"/>
+                <TextBlock  Text="{x:Bind DayOfWeek}" Margin="5,0,0,0" Width="100" TextTrimming="WordEllipsis"/>
+                <TextBlock  Text="{x:Bind Time}" Margin="5,0,0,0" Width="100" TextTrimming="WordEllipsis"/>
+                <TextBlock  Text="{x:Bind Room}" Margin="5,0,0,0" Width="100" TextTrimming="WordEllipsis"/>
+                <TextBlock  Text="{x:Bind Lecturer}" Margin="5,0,0,0" Width="150" TextTrimming="WordEllipsis" ToolTipService.ToolTip="{x:Bind Lecturer}"/>
+                <TextBlock  Text="{x:Bind Campus}" Margin="5,0,0,0" Width="150" TextTrimming="WordEllipsis" ToolTipService.ToolTip="{x:Bind Campus}"/>
             </StackPanel>
         </DataTemplate>
     </Page.Resources>

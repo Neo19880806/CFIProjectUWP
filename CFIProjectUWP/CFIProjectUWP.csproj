@@ -95,6 +95,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CFIDetailDialog.xaml.cs">
+      <DependentUpon>CFIDetailDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CFIDetailPage.xaml.cs">
+      <DependentUpon>CFIDetailPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CFIMainPage.xaml.cs">
       <DependentUpon>CFIMainPage.xaml</DependentUpon>
     </Compile>
@@ -125,6 +131,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="CFIDetailDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CFIDetailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="CFIMainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

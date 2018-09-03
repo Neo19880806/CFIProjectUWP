@@ -100,9 +100,24 @@ namespace CFIProjectUWP
             }
         }
 
-        private void StackPanel_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        private async void StackPanel_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
         {
+            //var result = await new ContentDialog()
+            //{
+            //    Title = "Tips",
+            //    Content = "Do you want to view details？",
+            //    PrimaryButtonText = "Confirm",
+            //    SecondaryButtonText = "Cancel"
+            //}.ShowAsync();
 
+            ////选中项准备查看、修改
+            //if (result == ContentDialogResult.Primary)
+            //{
+            //    this.Frame.Navigate(typeof(DetailPage), myListView.SelectedItem);
+            //}
+            var detailDialog = new CFIDetailDialog(myListView.SelectedItem);
+            await detailDialog.ShowAsync();
+            //this.Frame.Navigate(typeof(CFIDetailPage), myListView.SelectedItem);
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
