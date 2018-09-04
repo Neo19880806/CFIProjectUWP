@@ -46,11 +46,11 @@
                 <Button x:Name="controlsButton" Content="&#xE700;" FontFamily="Segoe MDL2 Assets" HorizontalAlignment="Left" Margin="0,15,0,0" Background="{x:Null}" Click="controlsButton_Click"/>
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
-                        <Button Name="btnFiltering" Content="&#xE71C;" FontFamily="Segoe MDL2 Assets" Background="{x:Null}"/>
+                        <Button Name="btnFiltering" Content="&#xE71C;" FontFamily="Segoe MDL2 Assets" Background="{x:Null}" Click="btnFiltering_Click"/>
                         <TextBlock Name="filteringTextBlock" Text="Filtering"></TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
-                        <Button Name="btnSorting" Content="&#xE8CB;" FontFamily="Segoe MDL2 Assets" Background="{x:Null}"/>
+                        <Button Name="btnSorting" Content="&#xE8CB;" FontFamily="Segoe MDL2 Assets" Background="{x:Null}" Click="btnSorting_Click"/>
                         <TextBlock Name="sortingTextBlock" Text="Sorting"></TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
@@ -61,6 +61,6 @@
             </StackPanel>
         </SplitView.Pane>
         <ListView x:Name="myListView"  ScrollViewer.VerticalScrollMode="Enabled"  ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.HorizontalScrollBarVisibility="Visible" 
-                          HeaderTemplate ="{StaticResource HeaderTemplate}" ItemTemplate="{StaticResource CFIDetailTemplate}" ItemsSource="{x:Bind mQueryList,Mode=OneWay}" Margin="0"/>
+                          HeaderTemplate ="{StaticResource HeaderTemplate}"  ItemTemplate="{StaticResource CFIDetailTemplate}" ItemsSource="{x:Bind mQueryList,Mode=OneWay}" Margin="0"/>
     </SplitView>
 </Page>

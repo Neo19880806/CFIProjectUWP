@@ -1,0 +1,31 @@
+﻿<ContentDialog
+    x:Class="CFIProjectUWP.View.CFISortingBYDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CFIProjectUWP.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Width="Auto" Loaded="ContentDialog_Loaded">
+    <Grid HorizontalAlignment="Left" Height="320" Margin="0" VerticalAlignment="Top" Width="400">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock x:Name="txtBlockHeading" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Sorting By" VerticalAlignment="Center" FontSize="30" FontWeight="Bold"/>
+        <RadioButton x:Name="rbLecturer" Grid.ColumnSpan="2" Content="Lecturer" HorizontalAlignment="Center" Margin="0" Grid.Row="1" VerticalAlignment="Center" GroupName="Sorting" IsChecked="True" Checked="radio_CheckedChanged"/>
+        <RadioButton x:Name="rbCampus" Grid.ColumnSpan="2" Content="Campus" HorizontalAlignment="Center" Margin="0" Grid.Row="2" VerticalAlignment="Center" GroupName="Sorting" Checked="radio_CheckedChanged"/>
+        <RadioButton x:Name="rbRoom" Grid.ColumnSpan="2" Content="Room" HorizontalAlignment="Center" Margin="0" Grid.Row="3" VerticalAlignment="Center" GroupName="Sorting" Checked="radio_CheckedChanged"/>
+        <Button x:Name="btnOK" Content="Confirm" HorizontalAlignment="Center" Margin="0" Grid.Row="4" VerticalAlignment="Center" Click="btnOK_Click"/>
+        <Button x:Name="btnCancel" Content="Cancel" Grid.Column="1" HorizontalAlignment="Center" Margin="0" Grid.Row="4" VerticalAlignment="Center" Click="btnCancel_Click"/>
+        <Border BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="183" Margin="86,4,0,0" Grid.Row="1" Grid.RowSpan="3" VerticalAlignment="Top" Width="234"/>
+
+    </Grid>
+
+</ContentDialog>

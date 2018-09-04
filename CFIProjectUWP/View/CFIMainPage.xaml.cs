@@ -1,6 +1,8 @@
 ﻿using CFIProjectUWP.Model;
+using CFIProjectUWP.View;
 using MySql.Data.MySqlClient;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -26,6 +28,7 @@ namespace CFIProjectUWP
     /// </summary>
     public sealed partial class CFIMainPage : Page
     {
+        private List<CFIDetail> mResultList = new List<CFIDetail>();
         private ObservableCollection<CFIDetail> mQueryList = new ObservableCollection<CFIDetail>();
         public CFIMainPage()
         {
@@ -58,7 +61,7 @@ namespace CFIProjectUWP
                     getCommand.CommandText = sqlQueryString;
                     using (MySqlDataReader reader = getCommand.ExecuteReader())
                     {
-                        mQueryList.Clear();
+                        mResultList.Clear();
                         while (reader.Read())
                         {
                             CFIDetail detail = new CFIDetail();
@@ -72,10 +75,10 @@ namespace CFIProjectUWP
                             detail.Room = reader.GetString("Room");
                             detail.Lecturer = reader.GetString("Lecturer");
                             detail.Campus = reader.GetString("Campus");
-                            mQueryList.Add(detail);
+                            mResultList.Add(detail);
                         }
 
-                        if (mQueryList.Count > 0)
+                        if (mResultList.Count > 0)
                         {
                             btnFiltering.IsEnabled = true;
                             btnSorting.IsEnabled = true;
@@ -85,6 +88,7 @@ namespace CFIProjectUWP
                             btnFiltering.IsEnabled = false;
                             btnSorting.IsEnabled = false;
                         }
+                        RefreshListView(mResultList);
                     }
                 }
             }
@@ -102,27 +106,48 @@ namespace CFIProjectUWP
 
         private async void StackPanel_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
         {
-            //var result = await new ContentDialog()
-            //{
-            //    Title = "Tips",
-            //    Content = "Do you want to view details？",
-            //    PrimaryButtonText = "Confirm",
-            //    SecondaryButtonText = "Cancel"
-            //}.ShowAsync();
-
-            ////选中项准备查看、修改
-            //if (result == ContentDialogResult.Primary)
-            //{
-            //    this.Frame.Navigate(typeof(DetailPage), myListView.SelectedItem);
-            //}
             var detailDialog = new CFIDetailDialog(myListView.SelectedItem);
             await detailDialog.ShowAsync();
-            //this.Frame.Navigate(typeof(CFIDetailPage), myListView.SelectedItem);
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(CFIValidSubjectPage));
+        }
+
+        private async void btnSorting_Click(object sender, RoutedEventArgs e)
+        {
+            CFISortingBYDialog dialog = new CFISortingBYDialog();
+            var result = await dialog.ShowAsync();
+
+            List<CFIDetail> list = null;
+            switch(dialog.SortBYResult)
+            {
+                case "Campus":
+                    list = mQueryList.OrderBy(x => x.Campus).ToList();
+                    break;
+                case "Lecturer":
+                    list = mQueryList.OrderBy(x => x.Lecturer).ToList();
+                    break;
+                case "Room":
+                    list = mQueryList.OrderBy(x => x.Room).ToList();
+                    break;
+            default:
+                break;
+            }
+
+            if (list!=null) { RefreshListView(list); };
+        }
+
+        private void btnFiltering_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RefreshListView(List<CFIDetail> list)
+        {
+            mQueryList.Clear();
+            list.ForEach(p => mQueryList.Add(p));
         }
     }
 }

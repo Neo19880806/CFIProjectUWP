@@ -10,7 +10,7 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel>
         <TextBlock x:Name="txtTitile" TextWrapping="Wrap" Text="Class Finder MainPage" VerticalAlignment="Center" Margin="10,0" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center"/>
-        <StackPanel Orientation="Horizontal">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <ComboBox x:Name="cmbValidSubject" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Center" MinWidth="200" Width="213" SelectedIndex="-1"/>
             <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="btnSearch_Click"/>
         </StackPanel>

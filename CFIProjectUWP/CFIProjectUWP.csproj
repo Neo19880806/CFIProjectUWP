@@ -95,19 +95,22 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CFIDetailDialog.xaml.cs">
+    <Compile Include="View\CFIDetailDialog.xaml.cs">
       <DependentUpon>CFIDetailDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CFIDetailPage.xaml.cs">
+    <Compile Include="View\CFIDetailPage.xaml.cs">
       <DependentUpon>CFIDetailPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CFIMainPage.xaml.cs">
+    <Compile Include="View\CFIMainPage.xaml.cs">
       <DependentUpon>CFIMainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\CFIDetail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CFIValidSubjectPage.xaml.cs">
+    <Compile Include="View\CFIValidSubjectPage.xaml.cs">
       <DependentUpon>CFIValidSubjectPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CFISortingBYDialog.xaml.cs">
+      <DependentUpon>CFISortingBYDialog.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -131,19 +134,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="CFIDetailDialog.xaml">
+    <Page Include="View\CFIDetailDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CFIDetailPage.xaml">
+    <Page Include="View\CFIDetailPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="CFIMainPage.xaml">
+    <Page Include="View\CFIMainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="CFIValidSubjectPage.xaml">
+    <Page Include="View\CFIValidSubjectPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CFISortingBYDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
