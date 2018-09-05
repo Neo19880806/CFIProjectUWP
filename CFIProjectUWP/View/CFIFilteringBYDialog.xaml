@@ -1,0 +1,32 @@
+﻿<ContentDialog
+    x:Class="CFIProjectUWP.View.CFIFilteringBYDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CFIProjectUWP.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Width="Auto" Loaded="ContentDialog_Loaded">
+    <Grid HorizontalAlignment="Left" Height="320" Margin="0" VerticalAlignment="Top" Width="400">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock x:Name="txtBlockHeading" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Filtering By" VerticalAlignment="Center" FontSize="30" FontWeight="Bold"/>
+        <RadioButton x:Name="rbLecturer" Content="Lecturer" HorizontalAlignment="Center" Margin="0" Grid.Row="1" VerticalAlignment="Center" GroupName="Sorting" IsChecked="True" Checked="radio_CheckedChanged"/>
+        <RadioButton x:Name="rbCampus" Content="Campus" HorizontalAlignment="Center" Margin="3.6,16,10,16" Grid.Row="1" VerticalAlignment="Center" GroupName="Sorting" Checked="radio_CheckedChanged" Grid.Column="2"/>
+        <Button x:Name="btnOK" Content="Confirm" HorizontalAlignment="Center" Margin="0" Grid.Row="4" VerticalAlignment="Center" Click="btnOK_Click"/>
+        <Button x:Name="btnCancel" Content="Cancel" Grid.Column="2" HorizontalAlignment="Center" Margin="0" Grid.Row="4" VerticalAlignment="Center" Click="btnCancel_Click"/>
+        <TextBlock x:Name="tbValue" HorizontalAlignment="Center" Margin="0" Grid.Row="2" TextWrapping="Wrap" Text="Value:" VerticalAlignment="Center"/>
+        <RichEditBox x:Name="richEBValue" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Center" Height="100" Margin="0" Grid.Row="2" Grid.RowSpan="2" VerticalAlignment="Center" Width="230"/>
+
+    </Grid>
+</ContentDialog>

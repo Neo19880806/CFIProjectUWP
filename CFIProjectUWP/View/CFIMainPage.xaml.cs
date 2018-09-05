@@ -110,6 +110,12 @@ namespace CFIProjectUWP
             await detailDialog.ShowAsync();
         }
 
+        private void btnReset_Click(object sender, RoutedEventArgs e)
+        {
+            if (mResultList.Count <= 0) return;
+            RefreshListView(mResultList);
+        }
+
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(CFIValidSubjectPage));
@@ -117,6 +123,7 @@ namespace CFIProjectUWP
 
         private async void btnSorting_Click(object sender, RoutedEventArgs e)
         {
+            if (mResultList.Count <= 0) return;
             CFISortingBYDialog dialog = new CFISortingBYDialog();
             var result = await dialog.ShowAsync();
 
@@ -139,9 +146,26 @@ namespace CFIProjectUWP
             if (list!=null) { RefreshListView(list); };
         }
 
-        private void btnFiltering_Click(object sender, RoutedEventArgs e)
+        private async void btnFiltering_Click(object sender, RoutedEventArgs e)
         {
+            if (mResultList.Count <= 0) return;
+            CFIFilteringBYDialog dialog = new CFIFilteringBYDialog();
+            var result = await dialog.ShowAsync();
 
+            List<CFIDetail> list = null;
+            switch (dialog.FilterBYResult)
+            {
+                case "Campus":
+                    list = mQueryList.Where(x=>x.Campus.Contains(dialog.FilterBYValue)).ToList();
+                    break;
+                case "Lecturer":
+                    list = mQueryList.Where(x=>x.Lecturer.Contains(dialog.FilterBYValue)).ToList();
+                    break;
+                default:
+                    break;
+            }
+
+            if (list != null) { RefreshListView(list); };
         }
 
         private void RefreshListView(List<CFIDetail> list)

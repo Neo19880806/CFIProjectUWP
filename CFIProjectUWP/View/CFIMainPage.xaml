@@ -54,6 +54,10 @@
                         <TextBlock Name="sortingTextBlock" Text="Sorting"></TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                        <Button Name="btnReset" Content="&#xE72C;" FontFamily="Segoe MDL2 Assets" Background="{x:Null}" Click="btnReset_Click"/>
+                        <TextBlock Name="btnResetTextBlock" Text="Reset"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
                         <Button Name="btnBack" Content="&#xE72B;" FontFamily="Segoe MDL2 Assets" Background="{x:Null}" Click="btnBack_Click"/>
                         <TextBlock Name="btnBackTextBlock" Text="Back"></TextBlock>
                     </StackPanel>

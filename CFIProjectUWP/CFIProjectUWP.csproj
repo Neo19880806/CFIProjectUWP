@@ -112,6 +112,9 @@
     <Compile Include="View\CFISortingBYDialog.xaml.cs">
       <DependentUpon>CFISortingBYDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\CFIFilteringBYDialog.xaml.cs">
+      <DependentUpon>CFIFilteringBYDialog.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -151,6 +154,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CFISortingBYDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CFIFilteringBYDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
