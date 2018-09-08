@@ -95,11 +95,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\FileHelper.cs" />
     <Compile Include="View\CFIDetailDialog.xaml.cs">
       <DependentUpon>CFIDetailDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\CFIDetailPage.xaml.cs">
-      <DependentUpon>CFIDetailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CFIMainPage.xaml.cs">
       <DependentUpon>CFIMainPage.xaml</DependentUpon>
@@ -140,10 +138,6 @@
     <Page Include="View\CFIDetailDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\CFIDetailPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\CFIMainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
