@@ -29,7 +29,7 @@ namespace CFIProjectUWP
             this.InitializeComponent();
         }
 
-        private static String connectionString = "database=work;Password=123456;User ID=root;server=127.0.0.1;SslMode=None";
+        private static String connectionString = "database=tafebuddy;Password=lgj123456;User ID=cfiproject;server=www.db4free.net;old guids=true;SslMode=None";
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -39,7 +39,7 @@ namespace CFIProjectUWP
                 {
                     connection.Open();
                     MySqlCommand getCommand = connection.CreateCommand();
-                    getCommand.CommandText = "select DISTINCT `Course Title` from tblsiscrns_sr004_2016_s2 where Day_Of_Week!='0'";
+                    getCommand.CommandText = "select DISTINCT `Course Title` from tblSISCRNs_SR004_2016_S2 where Day_Of_Week!='0'";
                     using (MySqlDataReader reader = getCommand.ExecuteReader())
                     {
                         while (reader.Read())
