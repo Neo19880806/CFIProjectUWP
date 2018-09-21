@@ -40,8 +40,8 @@ namespace CFIProjectUWP
             mySplitView.IsPaneOpen = !mySplitView.IsPaneOpen;
         }
 
-        //private static String connectionString = "database=work;Password=123456;User ID=root;server=127.0.0.1;SslMode=None";
-        private static String connectionString = "database=tafebuddy;Password=lgj123456;User ID=cfiproject;server=www.db4free.net;old guids=true;SslMode=None";
+        //private static String connectionString = "database=tafebuddy;Password=123456;User ID=root;server=127.0.0.1;SslMode=None";
+        private static String connectionString = "database=sql12257866;Password=LuRRmndhC2;User ID=sql12257866;server=sql12.freemysqlhosting.net;old guids=true;SslMode=None";
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -50,11 +50,24 @@ namespace CFIProjectUWP
             {
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
-                    String sqlQueryString = String.Format("select CRN,tblSubjectCompetencies.ITSubject,`Course Title`,`Meeting Start Date`," +
-                        "`Meeting Finish Date`,Day_Of_Week,Time,Room,Lecturer,Campus from tblSISCRNs_SR004_2016_S2 " +
-                        "left join tblSubjectCompetencies on tblSISCRNs_SR004_2016_S2.`Course Code`=tblSubjectCompetencies.CourseNumber " +
-                        "where `Course Title` = \"{0}\" and Day_Of_Week!='0'",
-                        selectedSubject);
+                    string TB_SR2018 = "tblSISCRNs_SR004_2018_S2";
+                    string TB_CP = "tblSubjectCompetencies";
+                    string TB_CS = "tblCRNSessions";
+                    string TB_SD = "tblStaffDetails";
+                     //Basic Query
+                    String BQuery = String.Format("SELECT {0}.CRN,{1}.ITSubject as ITSubject,{2}.Time as Time,{2}.`Day_of_Week` as Day_Of_Week," +
+                    "{3}.`unique_name` as Lecturer,`Course Title`,`Meeting Start Date`," +
+                    "`Meeting Finish Date`, Room,`Lecturer ID`, Campus from {0}",TB_SR2018,TB_CP,TB_CS,TB_SD);
+                    //Left join Compentency
+                    String LJCP = String.Format("left join {1} on {0}.`Course Code`= {1}.CourseNumber",TB_SR2018,TB_CP);
+                    //Left join CRNSession
+                    String LJCS = String.Format("left join {1} on {1}.CRN = {0}.CRN",TB_SR2018,TB_CS);
+                    //Left join StaffDetails
+                    String LJSD = String.Format("left join {1} on {1}.`InstructorID` = {0}.`Lecturer ID`",TB_SR2018,TB_SD);
+                    //Where
+                    String WHERE = String.Format("where `Course Title` = \"{0}\" and Day_Of_Week!=\"\" and Room!=\"\"", selectedSubject);
+                    //Final QueryString
+                    String sqlQueryString = String.Format("{0} {1} {2} {3} {4}", BQuery, LJCP, LJCS, LJSD,WHERE);
 
                     connection.Open();
                     MySqlCommand getCommand = connection.CreateCommand();

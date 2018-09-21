@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Popups;
@@ -26,10 +27,14 @@ namespace CFIProjectUWP
     {
         public CFIValidSubjectPage()
         {
+            System.Text.EncodingProvider ppp;
+            ppp = System.Text.CodePagesEncodingProvider.Instance;
+            Encoding.RegisterProvider(ppp);
             this.InitializeComponent();
         }
 
-        private static String connectionString = "database=tafebuddy;Password=lgj123456;User ID=cfiproject;server=www.db4free.net;old guids=true;SslMode=None";
+        //private static String connectionString = "database=movedb;Password=123456;User ID=root;server=127.0.0.1;SslMode=None";
+        private static String connectionString = "database=sql12257866;Password=LuRRmndhC2;User ID=sql12257866;server=sql12.freemysqlhosting.net;old guids=true;SslMode=None";
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -39,7 +44,7 @@ namespace CFIProjectUWP
                 {
                     connection.Open();
                     MySqlCommand getCommand = connection.CreateCommand();
-                    getCommand.CommandText = "select DISTINCT `Course Title` from tblSISCRNs_SR004_2016_S2 where Day_Of_Week!='0'";
+                    getCommand.CommandText = "select DISTINCT `Course Title` from tblSISCRNs_SR004_2018_S2";
                     using (MySqlDataReader reader = getCommand.ExecuteReader())
                     {
                         while (reader.Read())
@@ -56,7 +61,7 @@ namespace CFIProjectUWP
 
                 }
             }
-            catch (MySqlException)
+            catch (MySqlException ex)
             {
                 MessageDialog dialog = new MessageDialog("Couldn't connect to database!");
                 await dialog.ShowAsync();
