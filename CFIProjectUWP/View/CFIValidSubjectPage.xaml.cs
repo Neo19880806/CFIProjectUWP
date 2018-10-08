@@ -33,8 +33,7 @@ namespace CFIProjectUWP
             this.InitializeComponent();
         }
 
-        //private static String connectionString = "database=movedb;Password=123456;User ID=root;server=127.0.0.1;SslMode=None";
-        private static String connectionString = "database=sql12257866;Password=LuRRmndhC2;User ID=sql12257866;server=sql12.freemysqlhosting.net;old guids=true;SslMode=None";
+        private static String connectionString = "database=LGJtafebuddy;Password=123456;User ID=Guest;server=www.mygithub.top;old guids=true;SslMode=None";
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -70,6 +69,7 @@ namespace CFIProjectUWP
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
+            if(cmbValidSubject.SelectedIndex == -1) { return; }
             this.Frame.Navigate(typeof(CFIMainPage),cmbValidSubject.SelectedValue.ToString());
         }
     }

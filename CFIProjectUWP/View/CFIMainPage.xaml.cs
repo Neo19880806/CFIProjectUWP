@@ -40,8 +40,7 @@ namespace CFIProjectUWP
             mySplitView.IsPaneOpen = !mySplitView.IsPaneOpen;
         }
 
-        //private static String connectionString = "database=tafebuddy;Password=123456;User ID=root;server=127.0.0.1;SslMode=None";
-        private static String connectionString = "database=sql12257866;Password=LuRRmndhC2;User ID=sql12257866;server=sql12.freemysqlhosting.net;old guids=true;SslMode=None";
+        private static String connectionString = "database=lgjtafebuddy;Password=123456;User ID=Guest;server=www.mygithub.top;old guids=true;SslMode=None";
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
